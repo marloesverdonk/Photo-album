@@ -1,4 +1,4 @@
-//export const NEW_HELLO_WORLD = 'NEW_HELLO_WORLD'
+export const NEW_HELLO_WORLD = 'NEW_HELLO_WORLD'
 
 export function helloWorld(firstName, lastName) {
   return {
