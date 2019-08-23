@@ -1,5 +1,7 @@
+import * as request from 'superagent'
 export const ADD_ALBUM = 'ADD_ALBUM'
 export const SET_ALBUMS = 'SET_ALBUMS'
+
 
 export function addAlbum(id, title) {
   return {
@@ -17,5 +19,14 @@ export function setAlbums(albums) {
     payload: {
       albums: albums
     }
+  }
+}
+
+export function getAlbums() {
+  return function (dispatch) {
+    request('https://jsonplaceholder.typicode.com/albums')
+      .then(response => {
+        dispatch(setAlbums(response.body))
+      })
   }
 }

@@ -2,17 +2,14 @@ import * as React from 'react'
 import * as request from 'superagent'
 import AlbumsList from './AlbumsList'
 import { connect } from 'react-redux'
-import { addAlbum , setAlbums } from '../actions/addAlbum'
+import { addAlbum , setAlbums, getAlbums } from '../actions/addAlbum'
 
 
 
 class AlbumsListContainer extends React.Component {
-  //state = {}
 
   componentDidMount() {
-    request('https://jsonplaceholder.typicode.com/albums')
-    //.then(response => this.setState({albums: response.body}))
-    .then(response => this.props.setAlbums(response.body))
+    this.props.getAlbums()
   }
 
   render() {
@@ -28,5 +25,5 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, { addAlbum, setAlbums })(AlbumsListContainer)
+export default connect(mapStateToProps, { addAlbum, setAlbums, getAlbums })(AlbumsListContainer)
 
